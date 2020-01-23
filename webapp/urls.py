@@ -6,9 +6,9 @@ from . import views
 urlpatterns = [
  url(r'^$', views.index, name='index'),
  url(r'^view$', views.show, name='show'),
- url(r'^edit/(?P<id>\d+)/$', views.edit, name='form'),
- path('update/<int:id>/', views.update, name='update'),
- path('person/create', views.create, name='create'),
- path('person/store', views.store, name='store'),
- path('person/<int:id>/delete', views.destroy, name='webapp.delete'),
+ url(r'^masina/edit/(?P<id>\d+)$', views.edit, name='form'),
+ path('masina/<int:id>/update', views.update, name='update'),
+ path('masina/create', views.create, name='create'),
+ path('masina/store', views.store, name='store'),
+ path('masina/<int:id>/delete', views.destroy, name='webapp.delete'),
 ]

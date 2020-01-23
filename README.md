@@ -3,6 +3,8 @@
 
 django 
 
+create a python env if needed with python version 3.6.9
+
 1. start env
 
 source python-3-env/bin/activate
@@ -24,10 +26,10 @@ email test@test.ro
 
 3.  models migrate comands
 
-a. make oine it dose not exists
+a. make one if dose not exists
 
-pmanage.py makemigrations webapp
+python manage.py makemigrations webapp
 
 b. migrate it
 
-pmanage.py migrate webapp
+python manage.py migrate webapp

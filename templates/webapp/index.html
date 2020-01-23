@@ -1,0 +1,12 @@
+{% block foo %}
+   {% include "home_menu.html" %}
+{% endblock %}
+
+<h1>Test index</h1>
+
+
+{% for user in users %}
+</br>
+User: {{ user.username }} - Admin: {{ user.is_staff }} - Superuser: {{ user.is_superuser }} - Last login: {{ user.last_login }}
+
+{% endfor %}

@@ -1,0 +1,10 @@
+{% block foo %}
+   {% include "home_menu.html" %}
+{% endblock %}
+
+<h1> {{ pass_var }} haaaaa </h1>
+
+{% for masina in masini %}
+</br>
+{{ masina.marca }} {{ masina.pret }} <a href="{% url 'form' masina.id %}"> edit </a> <a href="{% url 'webapp.delete' masina.id %}"> delete </a>
+{% endfor %}

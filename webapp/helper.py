@@ -21,8 +21,7 @@ def validatorPost(request, validate_array):
             if restrict not in default or re.search(default[restrict][0], values[input_name], re.I):
                 continue
             if input_name not in error_message:
-                error_message[input_name] = [str(input_name) + default[restrict][1]]
-            else:
-                error_message[input_name].append(str(input_name) + default[restrict][1])
+                error_message[input_name] = set()
+            error_message[input_name].add(str(input_name) + default[restrict][1])
     return error_message, values
 

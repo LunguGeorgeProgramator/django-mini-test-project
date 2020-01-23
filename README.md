@@ -17,7 +17,11 @@ cd ../../python-projects/django-projects/project01
 
 python manage.py runserver 0.0.0.0:7070
 
+http://0.0.0.0:7070/
+
 python manage.py createsuperuser
+
+http://0.0.0.0:7070/admin/
 
 user: george
 pasword: lungu100

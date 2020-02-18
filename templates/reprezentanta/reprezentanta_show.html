@@ -4,8 +4,9 @@
 
 
 <h1>Reprezentatia: {{ reprezentanta.nume }} </h1>
-
-Pret: {{ masina.pret }}
+<br>
+Editeaza:
+<a href="{% url 'reprezentanta_form' reprezentanta.id %}"> edit </a>
 <br>
 <a href="{% url 'masina_create' reprezentanta.id %}">Inregistreaza masini pentru reprezentanta</a>
 <br>

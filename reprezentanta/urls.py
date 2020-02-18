@@ -11,4 +11,5 @@ urlpatterns = [
  path('reprezentanta/create', views.create, name='reprezentanta_create'),
  path('reprezentanta/store', views.store, name='reprezentanta_store'),
  path('reprezentanta/<int:id>/delete', views.destroy, name='reprezentanta_delete'),
+ path('reprezentanta/<int:id>/delete/<int:masini_true>', views.destroy, name='reprezentanta_delete'),
 ]

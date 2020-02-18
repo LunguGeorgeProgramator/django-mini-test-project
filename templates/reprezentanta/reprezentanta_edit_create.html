@@ -2,19 +2,29 @@
    {% include "head.html" %}
 {% endblock %}
 
-<h1>{{ method|capfirst }} car {{ masina.first_name }}</h1>
+<h1>{{ method|capfirst }} reprezentanta {{ reprezentanta.nume }}</h1>
 
 <form action="{% if reprezentanta %} {% url 'reprezentanta_update' reprezentanta.id %} {% else %} {% url 'reprezentanta_store' %} {% endif %}" method="post">
     {% csrf_token %}
     <input type="text" name="nume" id="nume" value="{% if values and 'nume' in values  %}{{ values.nume }}{% else %}{{ reprezentanta.nume }}{%endif%}">
     {% include "error.html" with error_message=error_message  input_name='nume' %}
     </br>
-    </br>
+     </br>
     <input type="text" name="localitate" id="localitate" value="{% if values and 'localitate' in values  %}{{ values.localitate }}{% else %}{{ reprezentanta.localitate }}{%endif%}">
     {% include "error.html" with error_message=error_message  input_name='localitate' %}
+     </br>
+        {% if 'edit' in method %}
+        </br>
+        <input type="checkbox" id="all-cars" name="sterge_masinile" value="true"> Sterge definitiv toate masinile asociate cu aceasta reprezentanta?
+    {%endif%}
+    </br>
+    {% for masina in masini %}
+    </br>
+    <input type="checkbox" id="vehicle1" name="masini" value="{{ masina.id }}"> adauga masina fara reprezenant la acesta? {{ masina.marca }} {{ masina.pret }}  <a href="{% url 'masina_show' masina.id %}"> view </a> <a href="{% url 'masina_form' masina.id %}"> edit </a> <a href="{% url 'masina_delete' masina.id %}"> delete </a>
+    {% endfor %}
     </br>
     </br>
-    <input type="submit" value="Save">
+     <input type="submit" value="Save">
 </form>
 
 {% block footer %}

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from .models import Reprezentanta
+from masina.models import Masini
 from project01.helper import db_table_exists, validatorPost
 
 
@@ -22,7 +23,8 @@ def show(request, id):
 def edit(request, id):
     return render(request, 'reprezentanta/reprezentanta_edit_create.html', {
             'reprezentanta': Reprezentanta.objects.get(id=id),
-            'method': 'edit'
+            'method': 'edit',
+            'masini': Masini.objects.filter(reprezentanta_id__isnull=True)
         })
 
 
@@ -41,6 +43,13 @@ def update(request, id):
     reprezentanta.nume = values['nume']
     reprezentanta.localitate = values['localitate']
     reprezentanta.save()
+    for masina_id in request.POST.getlist('masini'):
+        m = Masini.objects.get(id=masina_id)
+        m.reprezentanta = reprezentanta
+        m.save()
+    if 'sterge_masinile' in request.POST and 'true' in request.POST['sterge_masinile']:
+        reprezentanta.masini_set.all().delete()
+
     return redirect('reprezentanta_show', id=reprezentanta.id)
 
 
@@ -65,7 +74,7 @@ def store(request):
     return redirect('reprezentanta_show', id=reprezentanta.id)
 
 
-def destroy(request, id):
+def destroy(request, id, masini_true=None):
     reprezentanta = Reprezentanta.objects.get(id=id)
     reprezentanta.delete()
     return redirect('reprezentanta_index')

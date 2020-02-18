@@ -1,5 +1,5 @@
-{% block foo %}
-   {% include "home_menu.html" %}
+{% block head %}
+   {% include "head.html" %}
 {% endblock %}
 
 <h1>{{ method|capfirst }} car {{ masina.first_name }}</h1>
@@ -17,3 +17,6 @@
     <input type="submit" value="Save">
 </form>
 
+{% block footer %}
+   {% include "footer.html" %}
+{% endblock %}

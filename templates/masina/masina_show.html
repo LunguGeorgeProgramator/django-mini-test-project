@@ -1,7 +1,11 @@
-{% block foo %}
-   {% include "home_menu.html" %}
+{% block head %}
+   {% include "head.html" %}
 {% endblock %}
 
 <h1>Car type: {{ masina.marca }} </h1>
 
 Pret: {{ masina.pret }}
+
+{% block footer %}
+   {% include "footer.html" %}
+{% endblock %}

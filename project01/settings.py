@@ -30,6 +30,14 @@ ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
 # Application definition
 
+STATIC_ROOT = '/static/'
+
+# STATICFILES_FINDERS = (
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+# #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+# )
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

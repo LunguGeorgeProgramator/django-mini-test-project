@@ -1,6 +1,7 @@
-{% block foo %}
-   {% include "home_menu.html" %}
+{% block head %}
+   {% include "head.html" %}
 {% endblock %}
+
 
 <h1>Reprezentante</h1>
 
@@ -8,3 +9,7 @@
 </br>
 {{ reprezentanta.nume }} {{ reprezentanta.localitate }}  <a href="{% url 'reprezentanta_show' reprezentanta.id %}"> view </a> <a href="{% url 'reprezentanta_form' reprezentanta.id %}"> edit </a> <a href="{% url 'reprezentanta_delete' reprezentanta.id %}"> delete </a>
 {% endfor %}
+
+{% block footer %}
+   {% include "footer.html" %}
+{% endblock %}

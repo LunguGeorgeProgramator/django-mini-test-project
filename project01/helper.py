@@ -10,7 +10,7 @@ def validatorPost(request, validate_array):
     default = {
         'number': (r'^\s*(?!\.)[\.\d]+\s*$', ' trebuie sa fie un numar.'),
         'required': (r'^\s*.+\s*$', ' trebuie sa nu fie goala.'),
-        'string': (r'^\s*(?!\d+)[\w\d]+\s*$', ' trebuie sa fie  un sir de caractere nu un singur numar.')
+        'string': (r'^\s*(?!\d+)[\w\d\W]+\s*$', ' trebuie sa fie  un sir de caractere nu un singur numar.')
     }
     error_message = {}
     values = {}

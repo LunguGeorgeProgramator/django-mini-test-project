@@ -1,0 +1,19 @@
+{% block foo %}
+   {% include "home_menu.html" %}
+{% endblock %}
+
+<h1>{{ method|capfirst }} car {{ reprezentanta.nume }}</h1>
+
+<form action="{% if reprezentanta %} {% url 'reprezentanta_update' reprezentanta.id %} {% else %} {% url 'reprezentanta_store' %} {% endif %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="nume" id="nume" value="{% if values and "nume" in values  %}{{ values.nume }}{% else %}{{ masina.nume }}{%endif%}">
+    {% include "error.html" with error_message=error_message  input_name='nume' %}
+    </br>
+    </br>
+    <input type="text" name="pret" id="pret" value="{% if values and "pret" in values  %}{{ values.pret }}{% else %}{{ masina.pret }}{%endif%}">
+    {% include "error.html" with error_message=error_message  input_name='pret' %}
+    </br>
+    </br>
+    <input type="submit" value="Save">
+</form>
+

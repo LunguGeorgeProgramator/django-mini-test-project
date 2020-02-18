@@ -2,7 +2,7 @@
    {% include "home_menu.html" %}
 {% endblock %}
 
-<h1>Edit person {{ masina.first_name }}</h1>
+<h1>{{ method|capfirst }} car {{ masina.first_name }}</h1>
 
 <form action="{% if masina %} {% url 'update' masina.id %} {% else %} {% url 'store' %} {% endif %}" method="post">
     {% csrf_token %}

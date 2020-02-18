@@ -2,15 +2,16 @@
    {% include "head.html" %}
 {% endblock %}
 
-<h1>{{ method|capfirst }} car {{ reprezentanta.nume }}</h1>
+<h1>{{ method|capfirst }} car {{ masina.nume }}</h1>
 
-<form action="{% if reprezentanta %} {% url 'reprezentanta_update' reprezentanta.id %} {% else %} {% url 'reprezentanta_store' %} {% endif %}" method="post">
+<form action="{% if masina %} {% url 'masina_update' masina.id %} {% else %} {% url 'masina_store' %} {% endif %}" method="post">
     {% csrf_token %}
-    <input type="text" name="nume" id="nume" value="{% if values and "nume" in values  %}{{ values.nume }}{% else %}{{ masina.nume }}{%endif%}">
-    {% include "error.html" with error_message=error_message  input_name='nume' %}
+    <input type="hidden" name="reprezentanta_id" id="reprezentanta_id" value="{% if values and 'reprezentanta_id' in values  %}{{ values.reprezentanta_id }}{% else %}{{ reprezentanta_id }}{%endif%}">
+    <input type="text" name="marca" id="marca" value="{% if values and 'marca' in values  %}{{ values.marca }}{% else %}{{ masina.marca }}{%endif%}">
+    {% include "error.html" with error_message=error_message  input_name='marca' %}
     </br>
     </br>
-    <input type="text" name="pret" id="pret" value="{% if values and "pret" in values  %}{{ values.pret }}{% else %}{{ masina.pret }}{%endif%}">
+    <input type="text" name="pret" id="pret" value="{% if values and 'pret' in values  %}{{ values.pret }}{% else %}{{ masina.pret }}{%endif%}">
     {% include "error.html" with error_message=error_message  input_name='pret' %}
     </br>
     </br>

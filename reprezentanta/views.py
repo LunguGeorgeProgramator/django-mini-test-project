@@ -12,8 +12,10 @@ def index(request):
 
 
 def show(request, id):
+    reprezentanta = Reprezentanta.objects.get(id=id)
     return render(request, 'reprezentanta/reprezentanta_show.html', {
-            'reprezentanta': Reprezentanta.objects.get(id=id)
+            'reprezentanta': reprezentanta,
+            'masini': reprezentanta.masini_set.all()
         })
 
 

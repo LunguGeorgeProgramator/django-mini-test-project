@@ -3,8 +3,12 @@
 {% endblock %}
 
 <h1>Car type: {{ masina.marca }} </h1>
-
+<br>
 Pret: {{ masina.pret }}
+<br>
+Reprezentanta: {{ masina.reprezentanta.nume }}
+<br>
+Localizata in: {{ masina.reprezentanta.localitate }}
 
 {% block footer %}
    {% include "footer.html" %}

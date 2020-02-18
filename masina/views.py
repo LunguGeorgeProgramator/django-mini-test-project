@@ -30,7 +30,7 @@ def show(request, id):
 
 def edit(request, id):
     masina = Masini.objects.get(id=id)
-    return render(request, 'masina/masina_edit_create.html', {'masina': masina, 'method': 'edit'})
+    return render(request, 'masina/masina_edit_create.html', {'masina': masina, 'method': 'edit', 'reprezentanta_id': masina.reprezentanta_id})
 
 
 def update(request, id):
@@ -44,26 +44,29 @@ def update(request, id):
     masina.marca = values['marca']
     masina.pret = values['pret']
     masina.save()
-    return redirect('show', id=id)
+    return redirect('masina_show', id=id)
 
 
-def create(request):
-    return render(request, 'masina/masina_edit_create.html', {'method': 'create'})
+def create(request, reprezentanta_id):
+    return render(request, 'masina/masina_edit_create.html', {'method': 'create', 'reprezentanta_id': reprezentanta_id})
 
 
 def store(request):
     error_message, values = validatorPost(request, {
         'marca': 'required|string',
         'pret': 'required|number',
+        'reprezentanta_id': 'required|number'
     })
     if error_message:
         return render(request, 'masina/masina_edit_create.html', {'error_message': error_message, 'values': values})
+    values['reprezentanta'] = Reprezentanta.objects.get(id=values['reprezentanta_id'])
+    del values['reprezentanta_id']
     masina = Masini(**values)
     masina.save()
-    return redirect('show', id=masina.id)
+    return redirect('masina_show', id=masina.id)
 
 
 def destroy(request, id):
     instance = Masini.objects.get(id=id)
     instance.delete()
-    return redirect('index')
+    return redirect('masina_index')

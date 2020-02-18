@@ -10,11 +10,10 @@
 User: {{ user.username }} - Admin: {{ user.is_staff }} - Superuser: {{ user.is_superuser }} - Last login: {{ user.last_login }}
 
 {% endfor %}
-<br>
-<a href="{% url 'masina_create' %}">Inregistreaza masina</a>
+
 {% for masina in masini %}
 </br>
-{{ masina.marca }} {{ masina.pret }}  <a href="{% url 'masina_show' masina.id %}"> view </a> <a href="{% url 'masina_form' masina.id %}"> edit </a> <a href="{% url 'masina_delete' masina.id %}"> delete </a>
+Marca: {{ masina.marca }} Pret: {{ masina.pret }} Reprezentanta: {{ masina.reprezentanta.nume }}  <a href="{% url 'masina_show' masina.id %}"> view </a> <a href="{% url 'masina_form' masina.id %}"> edit </a> <a href="{% url 'masina_delete' masina.id %}"> delete </a>
 {% endfor %}
 
 {% block footer %}

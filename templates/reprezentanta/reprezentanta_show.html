@@ -6,6 +6,14 @@
 <h1>Reprezentatia: {{ reprezentanta.nume }} </h1>
 
 Pret: {{ masina.pret }}
+<br>
+<a href="{% url 'masina_create' reprezentanta.id %}">Inregistreaza masini pentru reprezentanta</a>
+<br>
+Masini ce se regasesc in aceste reprezentanta:
+{% for masina in masini %}
+</br>
+{{ masina.marca }} {{ masina.pret }}  <a href="{% url 'masina_show' masina.id %}"> view </a> <a href="{% url 'masina_form' masina.id %}"> edit </a> <a href="{% url 'masina_delete' masina.id %}"> delete </a>
+{% endfor %}
 
 {% block footer %}
    {% include "footer.html" %}

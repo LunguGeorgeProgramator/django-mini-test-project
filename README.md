@@ -37,3 +37,13 @@ python manage.py makemigrations webapp
 b. migrate it
 
 python manage.py migrate webapp
+
+Set a user for admin:
+
+python manage.py createsuperuser
+
+Ex:
+
+user: george
+pasword: lungu100
+email test@test.ro

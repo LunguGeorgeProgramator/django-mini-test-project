@@ -4,8 +4,10 @@
 
 
 <h1>Reprezentante</h1>
-
-{% for reprezentante in reprezentanta %}
+</br>
+<a href="{% url 'reprezentanta_create' %}">Inregistreaza reprezentanta</a>
+</br>
+{% for reprezentanta in reprezentante %}
 </br>
 {{ reprezentanta.nume }} {{ reprezentanta.localitate }}  <a href="{% url 'reprezentanta_show' reprezentanta.id %}"> view </a> <a href="{% url 'reprezentanta_form' reprezentanta.id %}"> edit </a> <a href="{% url 'reprezentanta_delete' reprezentanta.id %}"> delete </a>
 {% endfor %}

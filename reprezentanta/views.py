@@ -6,21 +6,22 @@ from project01.helper import db_table_exists, validatorPost
 
 
 def index(request):
-    users = {}
-    if db_table_exists('auth_user'):
-        users = User.objects.all()
-    reprezentante = Reprezentanta.objects.all()
-    return render(request, 'reprezentanta/reprezentanta_index.html', {'users': users, 'reprezentante': reprezentante})
+    return render(request, 'reprezentanta/reprezentanta_index.html', {
+            'reprezentante': Reprezentanta.objects.all()
+        })
 
 
 def show(request, id):
-    reprezentanta = Reprezentanta.objects.get(id=id)
-    return render(request, 'reprezentanta/reprezentanta.html', {'reprezentanta': reprezentanta})
+    return render(request, 'reprezentanta/reprezentanta_show.html', {
+            'reprezentanta': Reprezentanta.objects.get(id=id)
+        })
 
 
 def edit(request, id):
-    reprezentanta = Reprezentanta.objects.get(id=id)
-    return render(request, 'reprezentanta/reprezentanta_edit_create.html', {'reprezentanta': reprezentanta, 'method': 'edit'})
+    return render(request, 'reprezentanta/reprezentanta_edit_create.html', {
+            'reprezentanta': Reprezentanta.objects.get(id=id),
+            'method': 'edit'
+        })
 
 
 def update(request, id):
@@ -30,15 +31,21 @@ def update(request, id):
         'localitate': 'required|string',
     })
     if error_message:
-        return render(request, 'masina/reprezentanta_edit_create.html', {'reprezentanta': reprezentanta, 'error_message': error_message, 'values': values})
-    reprezentanta.marca = values['nume']
-    reprezentanta.pret = values['localitate']
+        return render(request, 'reprezentanta/reprezentanta_edit_create.html', {
+            'reprezentanta': reprezentanta,
+            'error_message': error_message,
+            'values': values
+        })
+    reprezentanta.nume = values['nume']
+    reprezentanta.localitate = values['localitate']
     reprezentanta.save()
-    return redirect('show', id=id)
+    return redirect('reprezentanta_show', id=reprezentanta.id)
 
 
 def create(request):
-    return render(request, 'reprezentanta/reprezentanta_edit_create.html', {'method': 'create'})
+    return render(request, 'reprezentanta/reprezentanta_edit_create.html', {
+        'method': 'create'
+    })
 
 
 def store(request):
@@ -47,13 +54,16 @@ def store(request):
         'localitate': 'required|string',
     })
     if error_message:
-        return render(request, 'reprezentanta/reprezentanta_edit_create.html', {'error_message': error_message, 'values': values})
+        return render(request, 'reprezentanta/reprezentanta_edit_create.html', {
+            'error_message': error_message,
+            'values': values
+        })
     reprezentanta = Reprezentanta(**values)
     reprezentanta.save()
-    return redirect('show', id=reprezentanta.id)
+    return redirect('reprezentanta_show', id=reprezentanta.id)
 
 
 def destroy(request, id):
     reprezentanta = Reprezentanta.objects.get(id=id)
     reprezentanta.delete()
-    return redirect('index')
+    return redirect('reprezentanta_index')

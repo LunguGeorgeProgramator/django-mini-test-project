@@ -1,15 +1,22 @@
 {% block head %}
-   {% include "head.html" %}
+{% include "head.html" %}
 {% endblock %}
 
-<h1>Car type: {{ masina.marca }} </h1>
-<br>
-Pret: {{ masina.pret }}
-<br>
-Reprezentanta: {{ masina.reprezentanta.nume }}
-<br>
-Localizata in: {{ masina.reprezentanta.localitate }}
+<div class="row border-bottom border-light mb-4">
+   <div class="col">
+      <div class="h1 card-title">Masina: {{ masina.marca }}</div>
+   </div>
+   <div class="col text-right">
+      <a class="btn btn-secondary" href="{% url 'masina_form' masina.id %}">Editeaza</a>
+      <a class="btn btn-danger" href="{% url 'masina_delete' masina.id %}">Sterge</a>
+   </div>
+</div>
+<ul class="list-group list-group-flush">
+   <li class="list-group-item">Pret: {{ masina.pret }}</li>
+   <li class="list-group-item">Reprezentanta: {{ masina.reprezentanta.nume }}</li>
+   <li class="list-group-item">Localizata in: {{ masina.reprezentanta.localitate }}</li>
+</ul>
 
 {% block footer %}
-   {% include "footer.html" %}
+{% include "footer.html" %}
 {% endblock %}

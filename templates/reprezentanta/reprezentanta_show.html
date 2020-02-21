@@ -1,21 +1,50 @@
 {% block head %}
-   {% include "head.html" %}
+{% include "head.html" %}
 {% endblock %}
 
-
-<h1>Reprezentatia: {{ reprezentanta.nume }} </h1>
-<br>
-Editeaza:
-<a href="{% url 'reprezentanta_form' reprezentanta.id %}"> edit </a>
-<br>
-<a href="{% url 'masina_create' reprezentanta.id %}">Inregistreaza masini pentru reprezentanta</a>
-<br>
-Masini ce se regasesc in aceste reprezentanta:
-{% for masina in masini %}
-</br>
-{{ masina.marca }} {{ masina.pret }}  <a href="{% url 'masina_show' masina.id %}"> view </a> <a href="{% url 'masina_form' masina.id %}"> edit </a> <a href="{% url 'masina_delete' masina.id %}"> delete </a>
-{% endfor %}
+<div class="row border-bottom border-light mb-4">
+   <div class="col">
+      <div class="h1 card-title">Reprezentatia: {{ reprezentanta.nume }}</div>
+   </div>
+   <div class="col text-right">
+      <a class="btn btn-success" href="{% url 'masina_create' reprezentanta.id %}">Adauga o masina la reprezentanta</a>
+      <a class="btn btn-secondary" href="{% url 'reprezentanta_form' reprezentanta.id %}">Editeaza</a>
+      <a class="btn btn-danger" href="{% url 'reprezentanta_delete' reprezentanta.id %}">Sterge</a>
+   </div>
+</div>
+<ul class="list-group list-group-flush">
+   <li class="list-group-item">Localizata in: {{ reprezentanta.localitate }}</li>
+</ul>
+<div class="form-group mt-3">
+   <label class="h4">Masini ce se regasesc in acesta reprezentanta:</label>
+</div>
+<div class="table-responsive-sm">
+   <table class="table table-bordered bg-light table-hover table-fixed">
+      <thead class="bg-secondary text-white">
+      <tr>
+         <th scope="col" class="text-center">#</th>
+         <th scope="col" class="text-center">Marca</th>
+         <th scope="col" class="text-center">Pret</th>
+         <th scope="col" class="text-center">Actiuni</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for masina in masini %}
+      <tr>
+         <td scope="row" width="5%" class="text-center"> {{ forloop.counter }} </td>
+         <td width="40%">{{ masina.marca }}</td>
+         <td width="40%">{{ masina.pret }}</td>
+         <td width="15%" class="text-center">
+            <a class="btn btn-info" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="view" href="{% url 'masina_show' masina.id %}"> view </a>
+            <a class="btn btn-secondary" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="edit" href="{% url 'masina_form' masina.id %}"> edit </a>
+            <a class="btn btn-danger" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="delete" href="{% url 'masina_delete' masina.id %}"> del </a>
+         </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+   </table>
+</div>
 
 {% block footer %}
-   {% include "footer.html" %}
+{% include "footer.html" %}
 {% endblock %}

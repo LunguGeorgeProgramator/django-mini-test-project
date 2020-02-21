@@ -8,24 +8,24 @@ from project01.helper import db_table_exists, validatorPost
 
 def index(request):
     return render(request, 'reprezentanta/reprezentanta_index.html', {
-            'reprezentante': Reprezentanta.objects.all()
-        })
+        'reprezentante': Reprezentanta.objects.all()
+    })
 
 
 def show(request, id):
     reprezentanta = Reprezentanta.objects.get(id=id)
     return render(request, 'reprezentanta/reprezentanta_show.html', {
-            'reprezentanta': reprezentanta,
-            'masini': reprezentanta.masini_set.all()
-        })
+        'reprezentanta': reprezentanta,
+        'masini': reprezentanta.masini_set.all()
+    })
 
 
 def edit(request, id):
     return render(request, 'reprezentanta/reprezentanta_edit_create.html', {
-            'reprezentanta': Reprezentanta.objects.get(id=id),
-            'method': 'edit',
-            'masini': Masini.objects.filter(reprezentanta_id__isnull=True)
-        })
+        'reprezentanta': Reprezentanta.objects.get(id=id),
+        'method': 'edit',
+        'masini': Masini.objects.filter(reprezentanta_id__isnull=True)
+    })
 
 
 def update(request, id):

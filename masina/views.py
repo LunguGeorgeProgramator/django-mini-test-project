@@ -47,7 +47,7 @@ def update(request, id):
     return redirect('masina_show', id=id)
 
 
-def create(request, reprezentanta_id):
+def create(request, reprezentanta_id=None):
     return render(request, 'masina/masina_edit_create.html', {'method': 'create', 'reprezentanta_id': reprezentanta_id})
 
 
@@ -55,11 +55,13 @@ def store(request):
     error_message, values = validatorPost(request, {
         'marca': 'required|string',
         'pret': 'required|number',
-        'reprezentanta_id': 'required|number'
+        # 'reprezentanta_id': 'required|number'
+        'reprezentanta_id': ''
     })
     if error_message:
         return render(request, 'masina/masina_edit_create.html', {'error_message': error_message, 'values': values})
-    values['reprezentanta'] = Reprezentanta.objects.get(id=values['reprezentanta_id'])
+    if values['reprezentanta_id'] is not None and values['reprezentanta_id'] != 'None':
+        values['reprezentanta'] = Reprezentanta.objects.get(id=values['reprezentanta_id'])
     del values['reprezentanta_id']
     masina = Masini(**values)
     masina.save()

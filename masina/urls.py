@@ -8,6 +8,7 @@ urlpatterns = [
  url(r'^masina/edit/(?P<id>\d+)$', views.edit, name='masina_form'),
  path('masina/<int:id>/update', views.update, name='masina_update'),
  path('masina/create/<int:reprezentanta_id>', views.create, name='masina_create'),
+ path('masina/create', views.create, name='masina_create'),
  path('masina/store', views.store, name='masina_store'),
  path('masina/<int:id>/delete', views.destroy, name='masina_delete'),
 ]

@@ -1,0 +1,9 @@
+{% if error_message and input_name in error_message  %}
+    {% for key, value in error_message.items %}
+        {% if key ==  input_name %}
+            {% for err in value %}
+                <p><strong> {{ err }} </strong></p>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+{% endif %}

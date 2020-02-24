@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        {% load static %}
+         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-auto">
+                    <nav class="nav flex-column navbar-light row" style="background-color: #d8dfeb;">
+                        <div class="nav-item col border-bottom border-light">
+                            <a class="nav-link text-dark" href="{% url 'reprezentanta_index' %}">Home</a>
+                        </div>
+                        <div class="nav-item col border-bottom border-light">
+                            <a class="nav-link text-dark" href="{% url 'reprezentanta_index' %}">Reprezentanta</a>
+                        </div>
+                        <div class="nav-item col border-bottom border-light">
+                            <a class="nav-link text-dark" href="{% url 'masina_index' %}">Masini</a>
+                        </div>
+                        <div class="nav-item col border-bottom border-light">
+                            <a class="nav-link text-dark" href="#about">About</a>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col">
+                    <div class="card border-light" style="background-color: #e6ebf2;">
+                        <div class="card-body">

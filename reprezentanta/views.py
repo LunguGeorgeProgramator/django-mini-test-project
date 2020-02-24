@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from .models import Reprezentanta
 from masina.models import Masini
-from project01.helper import db_table_exists, validatorPost
+from mainApp.helper import db_table_exists, validatorPost
 
 
 def index(request):

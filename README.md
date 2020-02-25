@@ -2,9 +2,9 @@
 
 Min. Requirements:
 
-  2. python version 3.6.9
+  - python version 3.6.9
 
-  2. django 2.0.5
+  - django 2.0.5
 
 1. first create a virtual envirement for python django, here is a good ex. how:
 https://tutorial.djangogirls.org/en/django_installation/

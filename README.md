@@ -8,7 +8,7 @@
 
 1. first create a virtual envirement for python django, here is a good ex. how:
 
-        https://tutorial.djangogirls.org/en/django_installation/
+      https://tutorial.djangogirls.org/en/django_installation/
 
 2. Download this project and all content place it in project file.
 

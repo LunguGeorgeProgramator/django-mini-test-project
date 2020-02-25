@@ -27,7 +27,7 @@ class RecenzieForm(forms.ModelForm):
     descriere = forms.CharField(
         required=False,
         max_length=255,
-        label='Autor recenzie',
+        label='Recenzie',
         widget=forms.Textarea(
             attrs={
                 'class': 'form-control',

@@ -47,3 +47,7 @@ Ex:
 user: george
 pasword: lungu100
 email test@test.ro
+
+To run tests, comand:
+
+./manage.py test

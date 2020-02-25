@@ -60,4 +60,4 @@ https://tutorial.djangogirls.org/en/django_installation/
 
 7. To run tests files, just run comand:
 
-  ./manage.py test
+    ./manage.py test

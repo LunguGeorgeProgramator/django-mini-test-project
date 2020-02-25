@@ -23,7 +23,7 @@ https://tutorial.djangogirls.org/en/django_installation/
       
     source ../../python-projects/python-3-env/bin/activate
     
-  - set open project folder in terminal:
+  - open project folder in terminal:
   
     cd YOUR_PATH_ENV_PROJECTS_FOLDER/project01 
     

@@ -7,7 +7,7 @@
     - django 2.0.5
 
 1. first create a virtual envirement for python django, here is a good ex. how:
-https://tutorial.djangogirls.org/en/django_installation/
+        https://tutorial.djangogirls.org/en/django_installation/
 
 2. Download this project and all content place it in project file.
 
@@ -37,9 +37,9 @@ https://tutorial.djangogirls.org/en/django_installation/
   
     - Note. I am runing this server on localhost port 7070, change the host (if needed) in:
   
-        https://github.com/LunguGeorgeProgramator/django-mini-test-project/blob/master/mainApp/settings.py
+            https://github.com/LunguGeorgeProgramator/django-mini-test-project/blob/master/mainApp/settings.py
     
-        ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
+            ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
     
     - I am using port 7070 just because it is free on my machine, can be set any be changing the comand from point 4. above.
     - The site can be viewed in a browser by loading one of the links:
@@ -52,12 +52,12 @@ https://tutorial.djangogirls.org/en/django_installation/
     
      - Link for admin is:
       
-          http://0.0.0.0:7070/admin/
+            http://0.0.0.0:7070/admin/
 
 6. (optional) if migration is neede just run comand:
 
-      python manage.py migrate
+        python manage.py migrate
 
 7. To run tests files, just run comand:
 
-      ./manage.py test
+        ./manage.py test

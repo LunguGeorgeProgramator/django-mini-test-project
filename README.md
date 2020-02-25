@@ -41,7 +41,7 @@ https://tutorial.djangogirls.org/en/django_installation/
     
     ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
     
-  4.2 I am using port 7070 just because it is free on my machine, can be set any be changing the comand from point 4. above.
+  - I am using port 7070 just because it is free on my machine, can be set any be changing the comand from point 4. above.
 
 5. (optional) if needed admin is active just a user needs to be created with comand:
 
@@ -49,7 +49,7 @@ https://tutorial.djangogirls.org/en/django_installation/
     
      - Link for admin is:
       
-    http://0.0.0.0:7070/admin/
+       http://0.0.0.0:7070/admin/
 
 6. (optional) if migration is neede just run comand:
 

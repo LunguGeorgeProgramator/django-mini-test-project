@@ -38,7 +38,7 @@
   
     - Note. I am runing this server on localhost port 7070, change the host (if needed) in:
   
-            https://github.com/LunguGeorgeProgramator/django-mini-test-project/blob/master/mainApp/settings.py
+         https://github.com/LunguGeorgeProgramator/django-mini-test-project/blob/master/mainApp/settings.py
     
             ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
     
@@ -46,8 +46,8 @@
     
     - The site can be viewed in a browser by loading one of the links:
     
-            http://localhost:7070/
-            http://0.0.0.0:7070/
+         http://localhost:7070/
+         http://0.0.0.0:7070/
 
 5. (optional) if needed admin is active just a user needs to be created with comand:
 
@@ -55,7 +55,7 @@
     
      - Link for admin is:
       
-            http://0.0.0.0:7070/admin/
+          http://0.0.0.0:7070/admin/
 
 6. (optional) if migration is neede just run comand:
 

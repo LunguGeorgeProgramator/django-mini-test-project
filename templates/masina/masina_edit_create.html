@@ -2,7 +2,7 @@
 {% include "head.html" %}
 {% endblock %}
 
-<div class="h1 card-title border-bottom border-light pb-3">{{ method|capfirst }} car {{ masina.nume }}</div>
+<div class="h1 card-title border-bottom border-light pb-3">{{ method|capfirst }} masina {{ masina.nume }}</div>
 
 <form class="p-4" action="{% if masina %} {% url 'masina_update' masina.id %} {% else %} {% url 'masina_store' %} {% endif %}" method="post">
     {% csrf_token %}

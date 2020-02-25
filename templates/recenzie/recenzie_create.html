@@ -1,0 +1,53 @@
+{% block head %}
+{% include "head.html" %}
+{% endblock %}
+
+<div class="row border-bottom border-light mb-4">
+   <div class="col">
+      <div class="h1 card-title pb-3">{{ method|capfirst }} recenzie {{ recenzie.autor }}</div>
+   </div>
+   <div class="col text-right">
+      <a class="btn btn-info" href="{% url 'masina_show' masina_id %}">Inapoi</a>
+   </div>
+</div>
+
+<form class="p-4" action="" method="POST">
+    {% csrf_token %}
+    {{ form_recenzie.masina }}
+    <div class="form-group">
+        {{ form_recenzie.autor.label_tag }}
+        {{ form_recenzie.autor }}
+        {% for error in form_recenzie.autor.errors %}
+            <p><strong> {{ error }} </strong></p>
+        {% endfor %}
+    </div>
+    <div class="form-group">
+        {{ form_recenzie.descriere.label_tag }}
+        {{form_recenzie.descriere}}
+        {% for error in form_recenzie.descriere.errors %}
+            <p><strong> {{ error }} </strong></p>
+        {% endfor %}
+    </div>
+    <div class="form-group">
+        {{ form_recenzie.data_adaugari.label_tag }}
+        {{form_recenzie.data_adaugari}}
+        {% for error in form_recenzie.data_adaugari.errors %}
+            <p><strong> {{ error }} </strong></p>
+        {% endfor %}
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary float-right">Salveaza</button>
+    </div>
+    <div style="clear: both;"></div>
+</form>
+
+<script>
+  $( function() {
+    $( "#id_data_adaugari" ).datepicker({ dateFormat: 'dd/mm/yy 00:00:00' });
+    $( "#id_data_adaugari" ).attr('readonly', true);
+  } );
+</script>
+
+{% block footer %}
+{% include "footer.html" %}
+{% endblock %}

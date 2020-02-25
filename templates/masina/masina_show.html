@@ -9,13 +9,41 @@
    <div class="col text-right">
       <a class="btn btn-secondary" href="{% url 'masina_form' masina.id %}">Editeaza</a>
       <a class="btn btn-danger" href="{% url 'masina_delete' masina.id %}">Sterge</a>
+      <a class="btn btn-info" href="{% url 'recenzie_create' masina.id %}">Adauga recenzie</a>
+      {% if masina.reprezentanta %}
+      <a class="btn btn-info" href="{% url 'reprezentanta_show' masina.reprezentanta.id %}">Reprezentanta {{ masina.reprezentanta.nume }}</a>
+      {% endif %}
    </div>
 </div>
-<ul class="list-group list-group-flush">
+
+<ul class="list-group list-group-flush mb-4">
    <li class="list-group-item">Pret: {{ masina.pret }}</li>
    <li class="list-group-item">Reprezentanta: {{ masina.reprezentanta.nume }}</li>
    <li class="list-group-item">Localizata in: {{ masina.reprezentanta.localitate }}</li>
 </ul>
+{% if recenzii %}
+<div class="form-group mt-3">
+   <label class="h4">Recenzii {{ masina.marca }}:</label>
+</div>
+<div class="table-responsive-sm mb-4">
+   <table class="table table-bordered bg-light table-hover table-fixed">
+      <tbody>
+      {% for recenzie in recenzii %}
+      <tr>
+         <td scope="row" width="5%" class="text-center"> {{ forloop.counter }} </td>
+         <td width="15%">{{ recenzie.autor }}</td>
+         <td width="50%">{{ recenzie.descriere }}</td>
+         <td width="20%">{{ recenzie.data_adaugari }}</td>
+         <td width="10%" class="text-center">
+            <a class="btn btn-secondary" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="edit" href="{% url 'recenzie_edit' recenzie.id %}"> edit </a>
+            <a class="btn btn-danger" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="delete" href="{% url 'recenzie_delete' recenzie.id masina.id %}"> del </a>
+         </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+   </table>
+</div>
+{% endif %}
 
 {% block footer %}
 {% include "footer.html" %}

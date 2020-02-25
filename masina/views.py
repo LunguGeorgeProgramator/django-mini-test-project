@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from .models import Masini
 from reprezentanta.models import Reprezentanta
+from recenzie.models import Recenzie
 from mainApp.helper import db_table_exists, validatorPost
 
 
@@ -25,7 +26,10 @@ def index(request):
 
 def show(request, id):
     masina = Masini.objects.get(id=id)
-    return render(request, 'masina/masina_show.html', {'masina': masina})
+    return render(request, 'masina/masina_show.html', {
+        'masina': masina,
+        'recenzii': masina.recenzie_set.all()
+    })
 
 
 def edit(request, id):

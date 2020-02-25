@@ -42,10 +42,10 @@ https://tutorial.djangogirls.org/en/django_installation/
     ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
     
   - I am using port 7070 just because it is free on my machine, can be set any be changing the comand from point 4. above.
-  - The site can be load in a browser using link:
-    http://localhost:7070/
+  - The site can be viewed in a browser by loading one of the links:
+    - http://localhost:7070/
     or
-    http://0.0.0.0:7070/
+    - http://0.0.0.0:7070/
 
 5. (optional) if needed admin is active just a user needs to be created with comand:
 

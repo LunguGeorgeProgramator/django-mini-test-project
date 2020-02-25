@@ -13,7 +13,7 @@ https://tutorial.djangogirls.org/en/django_installation/
 
 3. Start the envirement in a terminal ex. comand (this is for ubuntu):
 
-  3.1 to activate:
+  - to activate:
   
       Path to the envirement:
       
@@ -23,7 +23,7 @@ https://tutorial.djangogirls.org/en/django_installation/
       
     source ../../python-projects/python-3-env/bin/activate
     
-  3.2 set open project folder in terminal:
+  - set open project folder in terminal:
   
     cd YOUR_PATH_ENV_PROJECTS_FOLDER/project01 
     

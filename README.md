@@ -1,6 +1,6 @@
 # django-mini-test-project
 
-Min. Requirements:
+0. Min. Requirements:
 
   - python version 3.6.9
 
@@ -35,7 +35,7 @@ https://tutorial.djangogirls.org/en/django_installation/
     
    python manage.py runserver 0.0.0.0:7070
   
-  4.1 Note. I am runing this server on localhost port 7070, change the host (if needed) in:
+  - Note. I am runing this server on localhost port 7070, change the host (if needed) in:
   
     https://github.com/LunguGeorgeProgramator/django-mini-test-project/blob/master/mainApp/settings.py
     
@@ -47,7 +47,7 @@ https://tutorial.djangogirls.org/en/django_installation/
 
     python manage.py createsuperuser
     
-     5.1 Link for admin is:
+     - Link for admin is:
       
     http://0.0.0.0:7070/admin/
 

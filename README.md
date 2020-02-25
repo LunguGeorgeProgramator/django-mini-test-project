@@ -2,9 +2,9 @@
 
 Min. Requirements:
 
-  python version 3.6.9
+  2. python version 3.6.9
 
-  django 2.0.5
+  2. django 2.0.5
 
 1. first create a virtual envirement for python django, here is a good ex. how:
 https://tutorial.djangogirls.org/en/django_installation/
@@ -13,7 +13,7 @@ https://tutorial.djangogirls.org/en/django_installation/
 
 3. Start the envirement in a terminal ex. comand (this is for ubuntu):
 
-  a. to activate:
+  3.1 to activate:
   
       Path to the envirement:
       
@@ -23,7 +23,7 @@ https://tutorial.djangogirls.org/en/django_installation/
       
     source ../../python-projects/python-3-env/bin/activate
     
-  b. set open project folder in terminal:
+  3.2 set open project folder in terminal:
   
     cd YOUR_PATH_ENV_PROJECTS_FOLDER/project01 
     
@@ -35,19 +35,19 @@ https://tutorial.djangogirls.org/en/django_installation/
     
    python manage.py runserver 0.0.0.0:7070
   
-  a. Note. I am runing this server on localhost port 7070, change the host (if needed) in:
+  4.1 Note. I am runing this server on localhost port 7070, change the host (if needed) in:
   
     https://github.com/LunguGeorgeProgramator/django-mini-test-project/blob/master/mainApp/settings.py
     
     ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
     
-  b. I am using port 7070 just because it is free on my machine, can be set any be changing the comand from point 4. above.
+  4.2 I am using port 7070 just because it is free on my machine, can be set any be changing the comand from point 4. above.
 
 5. (optional) if needed admin is active just a user needs to be created with comand:
 
     python manage.py createsuperuser
     
-     a. Link for admin is:
+     5.1 Link for admin is:
       
     http://0.0.0.0:7070/admin/
 

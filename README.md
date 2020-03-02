@@ -1,5 +1,7 @@
 # django-mini-test-project
 
+This project is a mini administration system that is for cars representance/shops with cars assigned to them, displaying the prices.
+
 0. Min. Requirements:
 
     - python version 3.6.9

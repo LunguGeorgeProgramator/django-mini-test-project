@@ -1,0 +1,60 @@
+{% block head %}
+{% include "head.html" %}
+{% endblock %}
+
+{% load static %}
+<script src="{% static 'js/vue.min.js' %}"></script>
+<script src="{% static 'js/axios.min.js' %}"></script>
+
+<div id="app">
+     <div class="h1">Ultimile recenzii:</div>
+    <div
+        class="card"
+        v-for="(recenzie, index) in recenzii"
+    >
+        <div class="card-header">
+            Masina: <a :href="'/masina/view/' + recenzie.masina.id">|| recenzie.masina.marca ||</a>
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>|| recenzie.descriere ||</p>
+                <footer class="blockquote-footer text-right">|| recenzie.autor || <cite title="Source Title">|| recenzie.data_adaugari ||</cite></footer>
+            </blockquote>
+        </div>
+    </div>
+</div>
+
+<script>
+window.axios.defaults.headers.common = {
+    'X-Requested-With': 'XMLHttpRequest',
+    'X-CSRF-TOKEN' : $('[name="csrfmiddlewaretoken"]').val(),
+};
+const app = new Vue({
+    delimiters: ['||', '||'],
+    el: '#app',
+    data: {
+        total_ones: 0,
+        total_twos: 0,
+        inputs: [],
+        recenzii: []
+    },
+    methods: {
+        getAllResults: function() {
+            axios.get('{% url 'recenzie_index' %}')
+            .then(res => {
+                this.recenzii = res.data;
+            })
+            .catch(error => {
+                alert("Eroare la request: " + String(error));
+            });
+        }
+    },
+    beforeMount(){
+        this.getAllResults()
+    }
+});
+</script>
+
+{% block footer %}
+{% include "footer.html" %}
+{% endblock %}

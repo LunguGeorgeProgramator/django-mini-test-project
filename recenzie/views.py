@@ -1,7 +1,32 @@
 from django.shortcuts import render, redirect
 from recenzie.forms import RecenzieForm
+from django.http import JsonResponse
 from recenzie.models import Recenzie
 from masina.models import Masini
+
+
+# def masina(request, masina_id):
+#     masina = Masini.objects.get(id=masina_id)
+#
+#     return JsonResponse({}, safe=False)
+#     # return JsonResponse(list(), safe=False)
+
+
+def index(request):
+    data_to_return = []
+    for recenzie in Recenzie.objects.all():
+        data = {}
+        for key in ['autor', 'descriere', 'data_adaugari', 'masina']:
+            if key is 'masina':
+                data[key] = {
+                    'id': recenzie.masina.id,
+                    'marca': recenzie.masina.marca
+                } if recenzie.masina else {}
+            else:
+                data[key] = getattr(recenzie, key)
+        if data:
+            data_to_return.append(data)
+    return JsonResponse(list(data_to_return), safe=False)
 
 
 def create(request, masina_id):

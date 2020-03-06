@@ -7,7 +7,16 @@
 <script src="{% static 'js/axios.min.js' %}"></script>
 
 <div id="app">
-     <div class="h1">Ultimile recenzii:</div>
+    <div class="h1">Ultimile recenzii:</div>
+    <div class="md-form mt-0 mb-4">
+        <input class="form-control"
+               ref="SearchInput"
+               type="text"
+               placeholder="Search"
+               aria-label="Search"
+               v-model="srSearch"
+               @input="searchFunction">
+    </div>
     <div
         class="card"
         v-for="(recenzie, index) in recenzii"
@@ -25,17 +34,38 @@
 </div>
 
 <script>
-window.axios.defaults.headers.common = {
-    'X-Requested-With': 'XMLHttpRequest',
-    'X-CSRF-TOKEN' : $('[name="csrfmiddlewaretoken"]').val(),
-};
 const app = new Vue({
     delimiters: ['||', '||'],
     el: '#app',
     data: {
-        recenzii: []
+        srSearch: '',
+        recenzii: [],
+        search_list: []
     },
     methods: {
+        searchFunction: function() {
+            if(this.srSearch.length === 0){
+                this.getAllResults();
+            } else {
+                let search_list = [];
+                let regex = new RegExp('(?:' + this.srSearch + ')', 'i');
+                for (const rec in this.recenzii){
+                    let find = [
+                        this.recenzii[rec].autor,
+                        this.recenzii[rec].descriere,
+                        this.recenzii[rec].data_adaugari,
+                        this.recenzii[rec].masina.marca,
+                    ].filter(function (word) {
+                         return regex.test(word);
+                    });
+                    
+                    if(find.length > 0){
+                        search_list.push(this.recenzii[rec]);
+                    }
+                }
+                this.recenzii = search_list;
+            }
+        },
         getAllResults: function() {
             axios.get('{% url 'recenzie_index' %}')
             .then(res => {
@@ -44,10 +74,10 @@ const app = new Vue({
             .catch(error => {
                 alert("Eroare la request: " + String(error));
             });
-        }
+        },
     },
     beforeMount(){
-        this.getAllResults()
+        this.getAllResults();
     }
 });
 </script>

@@ -5,13 +5,6 @@ from recenzie.models import Recenzie
 from masina.models import Masini
 
 
-# def masina(request, masina_id):
-#     masina = Masini.objects.get(id=masina_id)
-#
-#     return JsonResponse({}, safe=False)
-#     # return JsonResponse(list(), safe=False)
-
-
 def index(request):
     data_to_return = []
     for recenzie in Recenzie.objects.all():

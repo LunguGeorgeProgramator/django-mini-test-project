@@ -1,7 +1,6 @@
 {% block head %}
 {% include "head.html" %}
 {% endblock %}
-
 <div class="row border-bottom border-light mb-4">
    <div class="col">
       <div class="h1 card-title pb-3">{{ method|capfirst }} recenzie {{ recenzie.autor }}</div>
@@ -10,8 +9,7 @@
       <a class="btn btn-info" href="{% url 'masina_show' masina_id %}">Inapoi</a>
    </div>
 </div>
-
-<form class="p-4" action="" method="POST">
+<form action="" method="POST">
     {% csrf_token %}
     {{ form_recenzie.masina }}
     <div class="form-group">
@@ -40,7 +38,6 @@
     </div>
     <div style="clear: both;"></div>
 </form>
-
 <script>
   $( function() {
     $( "#id_data_adaugari" ).datepicker({ dateFormat: 'dd/mm/yy 00:00:00' });

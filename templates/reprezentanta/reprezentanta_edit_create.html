@@ -1,10 +1,15 @@
 {% block head %}
 {% include "head.html" %}
 {% endblock %}
-
-<div class="h1 card-title border-bottom border-light pb-3">{{ method|capfirst }} reprezentanta {{ reprezentanta.nume }}</div>
-
-<form class="p-4" action="{% if reprezentanta %} {% url 'reprezentanta_update' reprezentanta.id %} {% else %} {% url 'reprezentanta_store' %} {% endif %}" method="post">
+<div class="row border-bottom border-light mb-4">
+   <div class="col">
+      <div class="h1 card-title">{{ method|capfirst }} reprezentanta {{ reprezentanta.nume }}</div>
+   </div>
+   <div class="col text-right">
+      {% include "reprezentanta/toolbar_reprezentanta.html" %}
+   </div>
+</div>
+<form action="{% if reprezentanta %} {% url 'reprezentanta_update' reprezentanta.id %} {% else %} {% url 'reprezentanta_store' %} {% endif %}" method="post">
     {% csrf_token %}
     <div class="form-group">
         <label for="nume">Nume reprezentanta</label>

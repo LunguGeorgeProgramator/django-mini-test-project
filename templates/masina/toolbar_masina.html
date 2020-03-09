@@ -1,0 +1,34 @@
+<ul class="nav nav-tabs justify-content-end border-0" role="tablist">
+    {% if masina is None and method != "create" %}
+    <li class="nav-item">
+        <a class="nav-link alert-danger pr-2 pl-2" data-toggle="tab" role="tab"  href="{% url 'masina_create' %}">Adauga masina</a>
+    </li>
+    {% endif %}
+    {% if method != "edit" and masina %}
+    <li class="nav-item">
+        <a class="nav-link alert-danger pr-2 pl-2" data-toggle="tab" role="tab" href="{% url 'masina_form' masina.id %}">Editeaza</a>
+    </li>
+    {% endif %}
+    {% if masina %}
+    <li class="nav-item">
+        <p class="btn-link nav-link alert-warning pr-2 pl-2" style="cursor: pointer;" data-toggle="tab" role="tab" onclick="confirmRemove('{% url 'masina_delete' masina.id %}')" >Sterge</p>
+    </li>
+    {% endif %}
+    {% if masina and method != "create" %}
+    <li class="nav-item">
+        <a class="nav-link alert-primary pr-2 pl-2" data-toggle="tab" role="tab" href="{% url 'recenzie_create' masina.id %}">Add recenzie</a>
+    </li>
+    {% endif %}
+    {% if masina.reprezentanta %}
+    <li class="nav-item">
+        <a class="nav-link alert-success pr-2 pl-2" data-toggle="tab" role="tab" href="{% url 'reprezentanta_show' masina.reprezentanta.id %}">Reprezentanta</a>
+    </li>
+    {% endif %}
+</ul>
+<script>
+function confirmRemove(url){
+    if (confirm("Esti sigur ca vrei sa stergi?")) {
+        window.location.href = url;
+    }
+}
+</script>

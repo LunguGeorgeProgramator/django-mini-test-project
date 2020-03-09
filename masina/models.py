@@ -11,7 +11,5 @@ class Masini(models.Model):
 
     def delete(self):
         for image in self.media_set.all():
-            if os.path.isfile(image.media.path):
-                os.remove(image.media.path)
             image.delete()
         super(Masini, self).delete()

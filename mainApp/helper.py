@@ -1,4 +1,5 @@
 from django.db import connection
+from media.models import Media
 import re
 
 
@@ -25,3 +26,8 @@ def validatorPost(request, validate_array):
             error_message[input_name].add(str(input_name) + default[restrict][1])
     return error_message, values
 
+
+def uploadMedia(request, model):
+    if request.FILES:
+        for f in request.FILES.getlist('media'):
+            Media.objects.create(media=f, masina_id=model.id)

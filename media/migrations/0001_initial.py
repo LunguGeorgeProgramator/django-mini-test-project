@@ -14,12 +14,10 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Recenzie',
+            name='Media',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('autor', models.CharField(max_length=25)),
-                ('descriere', models.CharField(max_length=255)),
-                ('data_adaugari', models.DateTimeField()),
+                ('media', models.FileField(upload_to='masina/')),
                 ('masina', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='masina.Masini')),
             ],
         ),

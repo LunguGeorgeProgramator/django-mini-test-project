@@ -10,12 +10,24 @@
    {% include "masina/toolbar_masina.html" %}
    </div>
 </div>
-
 <ul class="list-group list-group-flush mb-4">
    <li class="list-group-item">Pret: {{ masina.pret }}</li>
    <li class="list-group-item">Reprezentanta: {{ masina.reprezentanta.nume }}</li>
    <li class="list-group-item">Localizata in: {{ masina.reprezentanta.localitate }}</li>
 </ul>
+{% if poze %}
+<div class="form-group mt-3">
+   <label class="h4">Galeria {{ masina.marca }}:</label>
+</div>
+<div class="gallery" id="gallery">
+   {% for media in poze %}
+   <div class="mb-3 pics animation all 2">
+       <img  class="img-fluid" src="/media/{{ media.media }}" alt="{{ media.id }}">
+       <p class="btn btn-danger mb-0" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="delete" onclick="confirmRemove('{% url 'masina_delete_photo' media.id %}')">  <span aria-hidden="true">&times;</span> </p>
+   </div>
+   {% endfor %}
+</div>
+{% endif %}
 {% if recenzii %}
 <div class="form-group mt-3">
    <label class="h4">Recenzii {{ masina.marca }}:</label>
@@ -31,7 +43,7 @@
          <td width="20%">{{ recenzie.data_adaugari }}</td>
          <td width="10%" class="text-center">
             <a class="btn btn-secondary" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="edit" href="{% url 'recenzie_edit' recenzie.id %}"> edit </a>
-            <a class="btn btn-danger" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="delete" href="{% url 'recenzie_delete' recenzie.id masina.id %}"> del </a>
+            <p class="btn btn-danger mb-0" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="delete" onclick="confirmRemove('{% url 'recenzie_delete' recenzie.id masina.id %}')"> del </p>
          </td>
       </tr>
       {% endfor %}

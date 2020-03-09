@@ -11,9 +11,7 @@
    {% include "masina/toolbar_masina.html" %}
    </div>
 </div>
-<!--<div class="h1 card-title border-bottom border-light pb-3">{{ method|capfirst }} masina {{ masina.nume }}</div>-->
-
-<form class="p-4" action="{% if masina %} {% url 'masina_update' masina.id %} {% else %} {% url 'masina_store' %} {% endif %}" method="post">
+<form action="{% if masina %} {% url 'masina_update' masina.id %} {% else %} {% url 'masina_store' %} {% endif %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="hidden" name="reprezentanta_id" id="reprezentanta_id" value="{% if values and 'reprezentanta_id' in values  %}{{ values.reprezentanta_id }}{% else %}{{ reprezentanta_id }}{%endif%}">
     <div class="form-group">
@@ -25,6 +23,9 @@
         <label for="pret">Pret masina</label>
         <input type="text" class="form-control" name="pret" id="pret" value="{% if values and 'pret' in values  %}{{ values.pret }}{% else %}{{ masina.pret }}{%endif%}">
         {% include "error.html" with error_message=error_message  input_name='pret' %}
+    </div>
+    <div class="form-group">
+        <input type="file" name="media" multiple>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary float-right">Salveaza</button>

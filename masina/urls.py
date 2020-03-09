@@ -11,4 +11,5 @@ urlpatterns = [
  path('masina/create', views.create, name='masina_create'),
  path('masina/store', views.store, name='masina_store'),
  path('masina/<int:id>/delete', views.destroy, name='masina_delete'),
+ path('masina/<int:id>/delete_photo', views.destroy_photo, name='masina_delete_photo'),
 ]

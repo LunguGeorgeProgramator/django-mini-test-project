@@ -1,10 +1,13 @@
+import os
+
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from .models import Masini
 from reprezentanta.models import Reprezentanta
 from recenzie.models import Recenzie
-from mainApp.helper import db_table_exists, validatorPost
+from mainApp.helper import db_table_exists, validatorPost, uploadMedia
+from media.models import Media
 
 
 def index(request):
@@ -28,7 +31,8 @@ def show(request, id):
     masina = Masini.objects.get(id=id)
     return render(request, 'masina/masina_show.html', {
         'masina': masina,
-        'recenzii': masina.recenzie_set.all()
+        'recenzii': masina.recenzie_set.all(),
+        'poze': masina.media_set.all(),
     })
 
 
@@ -48,6 +52,7 @@ def update(request, id):
     masina.marca = values['marca']
     masina.pret = values['pret']
     masina.save()
+    uploadMedia(request, masina)
     return redirect('masina_show', id=id)
 
 
@@ -69,10 +74,22 @@ def store(request):
     del values['reprezentanta_id']
     masina = Masini(**values)
     masina.save()
+    uploadMedia(request, masina)
     return redirect('masina_show', id=masina.id)
 
 
 def destroy(request, id):
-    instance = Masini.objects.get(id=id)
-    instance.delete()
+    masinina = Masini.objects.get(id=id)
+    masinina.delete()
+    return redirect('masina_index')
+
+
+def destroy_photo(request, id):
+    id_masina = None
+    photo = Media.objects.get(id=id)
+    if photo:
+        id_masina = photo.masina.id
+    photo.delete()
+    if id_masina is not None:
+        return redirect('masina_show', id=id_masina)
     return redirect('masina_index')

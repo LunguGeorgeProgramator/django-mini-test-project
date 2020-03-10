@@ -39,9 +39,11 @@
             {% endif %}
          </td>
          <td width="15%" class="text-center">
-            <a class="btn btn-info" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="view" href="{% url 'masina_show' masina.id %}"> view </a>
-            <a class="btn btn-secondary" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="edit" href="{% url 'masina_form' masina.id %}"> edit </a>
-            <p class="btn btn-danger mb-0" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="delete" onclick="confirmRemove('{% url 'masina_delete' masina.id %}')"> del </p>
+            <div class="btn-group" role="group">
+               <a class="btn alert-info pr-2 pl-2 mb-3" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="view" href="{% url 'masina_show' masina.id %}"> view </a>
+               <a class="btn alert-secondary pr-2 pl-2 mb-3" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="edit" href="{% url 'masina_form' masina.id %}"> edit </a>
+               <p class="btn alert-danger pr-2 pl-2" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="delete" onclick="confirmRemove('{% url 'masina_delete' masina.id %}')"> del </p>
+            </div>
          </td>
       </tr>
       {% endfor %}

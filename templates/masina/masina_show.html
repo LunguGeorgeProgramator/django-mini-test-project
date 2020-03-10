@@ -42,8 +42,10 @@
          <td width="50%">{{ recenzie.descriere }}</td>
          <td width="20%">{{ recenzie.data_adaugari }}</td>
          <td width="10%" class="text-center">
-            <a class="btn btn-secondary" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="edit" href="{% url 'recenzie_edit' recenzie.id %}"> edit </a>
-            <p class="btn btn-danger mb-0" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="delete" onclick="confirmRemove('{% url 'recenzie_delete' recenzie.id masina.id %}')"> del </p>
+            <div class="btn-group" role="group">
+               <a class="btn alert-secondary" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="edit" href="{% url 'recenzie_edit' recenzie.id %}"> edit </a>
+               <p class="btn alert-danger mb-0" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="delete" onclick="confirmRemove('{% url 'recenzie_delete' recenzie.id masina.id %}')"> del </p>
+            </div>
          </td>
       </tr>
       {% endfor %}

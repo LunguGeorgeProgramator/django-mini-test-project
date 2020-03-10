@@ -1,25 +1,17 @@
-<ul class="nav nav-tabs justify-content-end border-0" role="tablist">
+<div class="btn-group" role="group">
     {% if reprezentanta is None and method != "create" %}
-    <li class="nav-item">
-        <a class="nav-link alert-danger pr-2 pl-2" data-toggle="tab" role="tab"  href="{% url 'reprezentanta_create' %}">Add Reprezentante</a>
-    </li>
+        <a class="btn alert-danger pr-2 pl-2 mb-0" href="{% url 'reprezentanta_create' %}">Add Reprezentante</a>
     {% endif %}
     {% if method != "edit" and reprezentanta %}
-    <li class="nav-item">
-        <a class="nav-link alert-danger pr-2 pl-2" data-toggle="tab" role="tab" href="{% url 'reprezentanta_form' reprezentanta.id %}">Editeaza</a>
-    </li>
+        <a class="btn alert-danger pr-2 pl-2 mb-0" href="{% url 'reprezentanta_form' reprezentanta.id %}">Editeaza</a>
     {% endif %}
     {% if reprezentanta %}
-    <li class="nav-item">
-        <p class="btn-link nav-link alert-warning pr-2 pl-2" style="cursor: pointer;" data-toggle="tab" role="tab" onclick="confirmRemove('{% url 'reprezentanta_delete' reprezentanta.id %}')" >Sterge</p>
-    </li>
+        <p class="btn alert-warning pr-2 pl-2 mb-0" style="cursor: pointer;" onclick="confirmRemove('{% url 'reprezentanta_delete' reprezentanta.id %}')" >Sterge</p>
     {% endif %}
     {% if method != "create" and reprezentanta %}
-    <li class="nav-item">
-        <a class="nav-link alert-primary pr-2 pl-2" data-toggle="tab" role="tab" href="{% url 'masina_create' reprezentanta.id %}">Adauga o masina la reprezentanta</a>
-    </li>
+        <a class="btn alert-primary pr-2 pl-2 mb-0" href="{% url 'masina_create' reprezentanta.id %}">Adauga o masina la reprezentanta</a>
     {% endif %}
-</ul>
+</div>
 <script>
 function confirmRemove(url){
     if (confirm("Esti sigur ca vrei sa stergi?")) {

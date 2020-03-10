@@ -26,9 +26,11 @@
          <td width="40%"> {{ reprezentanta.nume }} </td>
          <td width="40%">{{ reprezentanta.localitate }} </td>
          <td width="15%" class="text-center">
-            <a class="btn btn-info" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="view" href="{% url 'reprezentanta_show' reprezentanta.id %}"> view </a>
-            <a class="btn btn-secondary" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="edit" href="{% url 'reprezentanta_form' reprezentanta.id %}"> edit </a>
-            <p class="btn btn-danger mb-0" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="delete" onclick="confirmRemove('{% url 'reprezentanta_delete' reprezentanta.id %}')"> del </p>
+            <div class="btn-group" role="group">
+               <a class="btn alert-info mb-3" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="view" href="{% url 'reprezentanta_show' reprezentanta.id %}"> view </a>
+               <a class="btn alert-secondary mb-3" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="edit" href="{% url 'reprezentanta_form' reprezentanta.id %}"> edit </a>
+               <p class="btn alert-danger mb-3" style="font-size: 10px;" data-toggle="tooltip" data-placement="top" title="delete" onclick="confirmRemove('{% url 'reprezentanta_delete' reprezentanta.id %}')"> del </p>
+            </div>
          </td>
          {% endfor %}
       </tr>

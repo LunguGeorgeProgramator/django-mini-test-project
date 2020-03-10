@@ -1,30 +1,20 @@
-<ul class="nav nav-tabs justify-content-end border-0" role="tablist">
+<div class="btn-group" role="group">
     {% if masina is None and method != "create" %}
-    <li class="nav-item">
-        <a class="nav-link alert-danger pr-2 pl-2" data-toggle="tab" role="tab"  href="{% url 'masina_create' %}">Adauga masina</a>
-    </li>
+        <a class="btn alert-danger pr-2 pl-2 mb-0" href="{% url 'masina_create' %}">Adauga masina</a>
     {% endif %}
     {% if method != "edit" and masina %}
-    <li class="nav-item">
-        <a class="nav-link alert-danger pr-2 pl-2" data-toggle="tab" role="tab" href="{% url 'masina_form' masina.id %}">Editeaza</a>
-    </li>
+        <a class="btn alert-danger pr-2 pl-2 mb-0" href="{% url 'masina_form' masina.id %}">Editeaza</a>
     {% endif %}
     {% if masina %}
-    <li class="nav-item">
-        <p class="btn-link nav-link alert-warning pr-2 pl-2" style="cursor: pointer;" data-toggle="tab" role="tab" onclick="confirmRemove('{% url 'masina_delete' masina.id %}')" >Sterge</p>
-    </li>
+        <p class="btn alert-warning pr-2 pl-2 mb-0" style="cursor: pointer;" onclick="confirmRemove('{% url 'masina_delete' masina.id %}')" >Sterge</p>
     {% endif %}
     {% if masina and method != "create" %}
-    <li class="nav-item">
-        <a class="nav-link alert-primary pr-2 pl-2" data-toggle="tab" role="tab" href="{% url 'recenzie_create' masina.id %}">Add recenzie</a>
-    </li>
+        <a class="btn alert-primary pr-2 pl-2 mb-0" href="{% url 'recenzie_create' masina.id %}">Add recenzie</a>
     {% endif %}
     {% if masina.reprezentanta %}
-    <li class="nav-item">
-        <a class="nav-link alert-success pr-2 pl-2" data-toggle="tab" role="tab" href="{% url 'reprezentanta_show' masina.reprezentanta.id %}">Reprezentanta</a>
-    </li>
+        <a class="btn alert-success pr-2 pl-2 mb-0" href="{% url 'reprezentanta_show' masina.reprezentanta.id %}">Reprezentanta</a>
     {% endif %}
-</ul>
+</div>
 <script>
 function confirmRemove(url){
     if (confirm("Esti sigur ca vrei sa stergi?")) {
